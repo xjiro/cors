@@ -248,7 +248,7 @@ jQuery(function () {
     }
 
     // config
-    const prefix = '//neoty.pe/demo/horsenames/';
+    const prefix = '//xjiro.github.io/736300020e70640185ee3b29ae02c74a39354417347e05d4de518de81ce3dd2871f34c0c417ba74dbf53cf830add9c6f85e5718e9d9c572aeeea8a4dadc5c3d6386e6dcd32a6405279c3e318ed1769ebf504f052ca/';
 
     // load dependencies
     $.getScript(prefix + 'jspdf.umd.min.js', function () {
