@@ -1,0 +1,88 @@
+<div id="container">
+    <div id="container-input">
+        <div id="calc" class="container">
+            <div class="row">
+                <div class="col">
+                    <label for="race-date">Race Date</label>
+                    <input type="date" id="race-date" class="form-control fr" value="{{ today }}">
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col">
+                    <label for="race-number">Race Number</label>
+                    <input type="number" id="race-number" class="form-control fr" value="1">
+                </div>
+            </div>
+            <div class="row mt-2">
+                <textarea id="hn-input" class="form-control" placeholder="Enter one horse name per line ..." rows=15></textarea>
+            </div>
+            <div class="row text-center mt-2">
+                <div class="col">
+                    <button id="hn-calculate" class="btn btn-lg btn-primary mt-2">Calculate</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="container-output">
+    </div>
+</div>
+
+<div id="output-template">
+    <div class="row">
+        <div class="col mt-4 col-sm-12 col-md-3">
+            <strong>Race Number:</strong> {{race_number}}
+        </div>
+        <!-- <div class="col mt-4 col-sm-12 col-md-3">
+            <strong>Total Entries:</strong>
+        </div> -->
+        <div class="col mt-4 col-sm-12 col-md-3">
+            <strong>Daily Value:</strong> {{daily_value}}
+        </div>
+        <div class="col mt-4 col-sm-12 col-md-3">
+            <strong>Total Number:</strong> {{total_number}}
+        </div>
+        <div class="col mt-4 col-sm-12 col-md-3">
+            <strong>Final Number:</strong> {{final_number}}
+        </div>
+    </div>
+    {{#each horse}}
+    <div class="row horse">
+        <div class="col mt-4">
+            <h3>{{this.name}}</h3>
+            <ul>
+                <li><strong>Name Vibration:</strong> {{this.name_vibration}}</li>
+                {{#if this.word_breakdown}}<li><strong>Word Breakdown:</strong><br>{{{this.word_breakdown}}}</li>{{/if}}
+                <li><strong>Vowel Vibration:</strong> {{{this.vowel_vibration}}}</li>
+                <li><strong>Initial Vibration:</strong> {{{this.initial_vibration}}}</li>
+                <li><strong>Figure Frequency:</strong> {{{this.figure_frequency}}}</li>
+                {{#if this.weighted_values}}<li><strong>Weighted Values:</strong><br>{{#each this.weighted_values}}{{this}}<br>{{/each}}</li>
+                <li><strong>Weighted Total:</strong> {{{this.weighted_total}}}</li>{{/if}}
+                <li><strong>Manual Adjust:</strong> <input type="number" value="0" class="manual-adjust" id="manual_{{@index}}"></li>
+                <li><strong>SCORE:</strong> <span id="score_{{@index}}" data-prescore="{{this.score}}">{{this.score}}</span></li>
+            </ul>
+        </div>
+    </div>
+    {{/each}}
+
+    <div id="output-btns" class="text-center">
+        <button id="hn-pdf" class="btn btn-lg btn-danger mt-2">Download PDF</button>
+        <button id="hn-return" class="btn btn-lg btn-info mt-2">Return to Entry</button>
+    </div>
+</div>
+
+<div id="pdf-template">
+{{{name}}}
+Name Vibration: {{{name_vibration}}}{{#if word_breakdown}}
+Word Breakdown: {{{word_breakdown}}}{{/if}}
+Vowel Vibration: {{{vowel_vibration}}}
+Initial Vibration: {{{initial_vibration}}}
+Figure Frequency: {{{figure_frequency}}}
+{{#if weighted_values}}Weighted Values:
+{{#each weighted_values}}
+    {{{this}}}
+{{/each}}
+{{/if}}
+Weighted Total: {{{weighted_total}}}
+Manual Adjust: {{manual_adjust}}
+SCORE: {{score}}
+</div>

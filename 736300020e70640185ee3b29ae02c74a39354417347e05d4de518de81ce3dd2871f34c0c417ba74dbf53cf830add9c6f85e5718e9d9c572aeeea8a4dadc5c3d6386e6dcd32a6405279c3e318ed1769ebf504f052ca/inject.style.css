@@ -1,0 +1,38 @@
+#container {
+    padding-top: 0 !important;
+}
+
+#hn-input {
+    border: 1px solid #111;
+    padding: 2px;
+    width: 100%;
+}
+
+#hn-input::placeholder {
+    color: #111;
+}
+
+#container-output {
+    display: none;
+}
+
+#calc label {
+    display: inline-block;
+    width: 45%;
+    word-wrap: none;
+    font-weight: bold;
+}
+
+#calc input.fr {
+    width: 45%;
+    float: right;
+}
+
+#container-output li {
+    list-style-type: none;
+}
+
+sup {
+    vertical-align: middle;
+    font-size: smaller;
+}
